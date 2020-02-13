@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Req } from '@nestjs/common';
+import { Controller, Get, Post, Req, Delete } from '@nestjs/common';
 import { PhotosService } from 'src/services/photos/photos.service';
 import { IPhoto } from 'src/interfaces/photo.interface';
 import { Request } from 'express';
+
 @Controller('photos')
 export class PhotosController {
     constructor( private readonly photosService: PhotosService){}
@@ -11,10 +12,19 @@ export class PhotosController {
         return this.photosService.getAll();
     }
 
+    @Get(':id')
+    getPhoto(@Req() req: Request): any{
+        return this.photosService.getPhoto(req.params.id);
+    }
+
     @Post()
     addPhoto(@Req() req: Request): any{
-        console.log(req.body);
         const { body } = req;
         return this.photosService.create(body);
+    }
+
+    @Delete(':id')
+    removePhoto(@Req() req: Request): any{
+        return this.photosService.deletePhoto(req.params.id);
     }
 }
