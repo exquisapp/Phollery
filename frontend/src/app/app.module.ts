@@ -6,16 +6,27 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FabComponent } from './components/fab/fab.component';
+
+import {MatButtonModule} from '@angular/material/button';
+import { NgxDropzoneModule } from 'ngx-dropzone';
+import { DropzoneComponent } from './components/dropzone/dropzone.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FabComponent,
+    DropzoneComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    BrowserAnimationsModule
+    MatButtonModule,
+    MatDialogModule,
+    NgxDropzoneModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
