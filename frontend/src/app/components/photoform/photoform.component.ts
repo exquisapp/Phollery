@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { PhotoService } from 'src/app/services/photo.service';
 
 @Component({
@@ -32,9 +32,8 @@ export class PhotoformComponent implements OnInit {
       this.photoService.setName(this.name);
 
       // this.photoService.createPhoto(this.file, this.name_).subscribe(p => console.log(p));
-
       this.photoService.uploadPhoto(this.file).subscribe(r => {
-        this.photoService.createPhoto(this.name_, r.url).subscribe(p => console.log(p));
+        this.photoService.createPhoto(this.name_, r.url).subscribe(p => { this.dialogRef.close(); this.photoService.getPhotos() });
 
       });
     }

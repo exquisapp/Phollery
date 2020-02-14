@@ -29,8 +29,9 @@ export class PhotoService {
   }
 
   getPhotos(){
-    return this.httpClient.get<IPhoto[]>(`${this.baseUrl}/`);
+    this.httpClient.get<IPhoto[]>(`${this.baseUrl}/`).subscribe( a => { console.log(a); this.photos.next(a) });
   }
+  
 
   addPhoto(){
 
@@ -39,9 +40,11 @@ export class PhotoService {
   uploadPhoto(file): Observable<IUrl>{
     let formData = new FormData();
     formData.append('file', file);
-
     return this.httpClient.post<IUrl>(`${this.baseUrl}/upload`, formData);
+  }
 
+  deletePhoto(id): Observable<any>{
+    return this.httpClient.delete(`${this.baseUrl}/${id}`);
   }
 
   createPhoto(name, url){

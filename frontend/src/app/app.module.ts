@@ -18,6 +18,7 @@ import { FormsModule } from '@angular/forms';
 import { PhotoService } from './services/photo.service';
 import { HttpClientModule } from '@angular/common/http';
 import { PhotosComponent } from './components/photos/photos.component';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { PhotosComponent } from './components/photos/photos.component';
     MatButtonModule,
     MatDialogModule,
     MatInputModule,
+    MatCardModule,
     NgxDropzoneModule,
     BrowserAnimationsModule,
   ],
