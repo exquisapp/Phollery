@@ -15,6 +15,8 @@ import { DropzoneComponent } from './components/dropzone/dropzone.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { PhotoformComponent } from './components/photoform/photoform.component';
 import { FormsModule } from '@angular/forms';
+import { PhotoService } from './services/photo.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     FormsModule,
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     MatButtonModule,
@@ -34,7 +37,7 @@ import { FormsModule } from '@angular/forms';
     NgxDropzoneModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [PhotoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { PhotoService } from 'src/app/services/photo.service';
 
 @Component({
   selector: 'app-dropzone',
@@ -6,22 +7,18 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
   styleUrls: ['./dropzone.component.scss']
 })
 export class DropzoneComponent implements OnInit {
-  @ViewChild('drop') drop: ElementRef;
+  file: File = null;
 
-  constructor() { }
+  constructor(private photoService: PhotoService) { }
 
   ngOnInit(): void {
     // setTimeout(() => console.log(this.drop))
   }
-
- 
-
-  file: File = null;
  
   onSelect(event) {
-    console.log(event, event.addedFiles);
     this.file =  event.addedFiles[0];
-    console.log(this.file)
+    // console.log(this.file)
+    this.photoService.setFile(this.file)
   }
   
   onRemove(event) {
