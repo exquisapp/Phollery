@@ -17,13 +17,15 @@ import { PhotoformComponent } from './components/photoform/photoform.component';
 import { FormsModule } from '@angular/forms';
 import { PhotoService } from './services/photo.service';
 import { HttpClientModule } from '@angular/common/http';
+import { PhotosComponent } from './components/photos/photos.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FabComponent,
     DropzoneComponent,
-    PhotoformComponent
+    PhotoformComponent,
+    PhotosComponent
   ],
   imports: [
     FormsModule,

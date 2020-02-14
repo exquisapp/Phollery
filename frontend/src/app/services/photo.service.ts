@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { IUrl } from '../interfaces/url.interface';
+import { IPhoto } from '../interfaces/photo.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +11,12 @@ export class PhotoService {
 
   private file = new BehaviorSubject<File>(null);
   private name = new BehaviorSubject<string>(""); 
+  private photos = new Subject<IPhoto[]>();
   private baseUrl: string = "http://localhost:3000/photos";
 
   readonly file$ = this.file.asObservable();
   readonly name$ = this.name.asObservable();
+  readonly photos$ = this.photos.asObservable();
 
   constructor(private httpClient: HttpClient) { }
 
@@ -23,6 +26,14 @@ export class PhotoService {
 
   setName(name: string){
     this.name.next(name);
+  }
+
+  getPhotos(){
+    return this.httpClient.get<IPhoto[]>(`${this.baseUrl}/`);
+  }
+
+  addPhoto(){
+
   }
 
   uploadPhoto(file): Observable<IUrl>{
