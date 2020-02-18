@@ -12,3 +12,7 @@ An rxjs app
 ### Later
 * Be able to edit the photo and download the photo
 * Be able to search for any of your photos 
+
+### To run with docker
+* run docker-compose up
+*NOTE: docker-compose has to be installed first
