@@ -1,6 +1,7 @@
 
 Welcome to Phollery
-rxjs 
+
+An rxjs app
 ## BASIC MVP
 
 * Be able to create photos on the server 
