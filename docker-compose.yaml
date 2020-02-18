@@ -1,0 +1,29 @@
+version: "3.7"
+
+services:
+  frontend:
+    build: ./phollery-api
+    image: phollery-frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+      - mongodb
+
+  backend:
+    build: ./frontend
+    image: phollery-api
+    ports:
+    - "3000:3000"
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:latest
+    volumes:
+       - db-data:/var/lib/mongo/data
+    ports:
+      - "27017-27019:27017-27019"
+
+volumes:
+  db-data:

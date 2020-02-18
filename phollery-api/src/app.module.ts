@@ -16,7 +16,7 @@ MulterModule.registerAsync({
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://127.0.0.1:27017/Phollery', { useNewUrlParser: true }), MongooseModule.forFeature([{ name: 'Photo', schema: PhotoSchema }]),
+    MongooseModule.forRoot('mongodb://mongodb:27017', { useNewUrlParser: true }), MongooseModule.forFeature([{ name: 'Photo', schema: PhotoSchema }]),
     MulterModule
   ],
   controllers: [AppController, PhotosController],
